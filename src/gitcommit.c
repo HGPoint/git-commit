@@ -8,12 +8,9 @@
 #include <assert.h>
 
 static char s_commit_hash[11] = {0};
-static const char* COMMIT_FILE_PATH = "gitcommit/commitinfo";
+static const char* COMMIT_FILE_PATH = "commitinfo";
 
 static void RetrieveGitCommit() {
-#if !defined(_WIN32) && !defined(_WIN64)
-    system("mkdir -p gitcommit");
-#endif
     char cmd[256];
 #if defined(_WIN32) || defined(_WIN64)
     snprintf(cmd, sizeof(cmd),
