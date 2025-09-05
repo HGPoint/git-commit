@@ -1,0 +1,16 @@
+[project]
+title = gitCommit
+version = 0.1
+
+[bootstrap]
+main_collection = /examples/examples.collectionc
+
+[display]
+width = 640
+height = 1136
+
+[script]
+shared_state = 1
+
+[library]
+include_dirs = gitCommit

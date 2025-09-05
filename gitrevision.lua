@@ -2,7 +2,7 @@ local log = require("hg.log")
 
 local M = {}
 
-local COMMIT_INFO_PATH = "gitcommit/commitinfo"
+local COMMIT_INFO_PATH = "/gitCommit/commitinfo"
 local REVISION_LENGTH = 10
 
 local function read_commit_hash()

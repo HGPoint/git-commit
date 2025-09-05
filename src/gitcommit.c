@@ -1,4 +1,4 @@
-#define LIB_NAME    "GitCommit"
+#define LIB_NAME    "gitCommit"
 #define MODULE_NAME "gitcommit"
 
 #include <dmsdk/sdk.h>
@@ -74,6 +74,6 @@ dmExtension::Result FinalizeGitCommit(dmExtension::Params*) {
     return dmExtension::RESULT_OK;
 }
 
-DM_DECLARE_EXTENSION(GitCommit, LIB_NAME,
+DM_DECLARE_EXTENSION(gitCommit, LIB_NAME,
                      AppInitializeGitCommit, AppFinalizeGitCommit,
                      InitializeGitCommit, 0, 0, FinalizeGitCommit)
