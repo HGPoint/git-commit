@@ -8,7 +8,6 @@
 
 static char s_commit_hash[11] = {0};
 static const char *COMMIT_FILE_PATH = "commitinfo";
-static int s_override_applied = 0;
 
 static void RetrieveGitCommit()
 {
@@ -67,10 +66,6 @@ static int LuaApplyRevisionOverride(lua_State *L)
 {
     DM_LUA_STACK_CHECK(L, 0);
 
-    if (s_override_applied)
-    {
-        return 0; 
-    }
     if (s_commit_hash[0] == '\0')
     {
         return 0;
@@ -99,7 +94,6 @@ static int LuaApplyRevisionOverride(lua_State *L)
     lua_setfield(L, -2, "get_config");
     lua_pop(L, 1);
 
-    s_override_applied = 1;
     return 0;
 }
 
@@ -117,7 +111,8 @@ static void LuaInit(lua_State *L)
     luaL_setfuncs(L, Module_methods, 0);
     lua_setglobal(L, MODULE_NAME);
 #else
-    luaL_register(L, MODULE_NAME, Module_methods); //  0 (lua 5.1)
+    luaL_register(L, MODULE_NAME, Module_methods);
+    lua_pop(L, 1);
 #endif
 
     if (lua_gettop(L) != top)
